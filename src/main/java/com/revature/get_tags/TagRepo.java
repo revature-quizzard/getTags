@@ -20,6 +20,10 @@ public class TagRepo {
         tagTable = dbClient.table("Tags", TableSchema.fromBean(Tag.class));
     }
 
+    public TagRepo(DynamoDbTable<Tag> tagTable) {
+        this.tagTable = tagTable;
+    }
+
     public List<Tag> getAll() {
         return tagTable.scan().items().stream().collect(Collectors.toList());
     }
