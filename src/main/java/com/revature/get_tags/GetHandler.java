@@ -43,6 +43,7 @@ public class GetHandler implements RequestHandler<APIGatewayProxyRequestEvent, A
         }
 
         responseEvent.setBody(mapper.toJson(tags));
+        responseEvent.setStatusCode(200);
         return responseEvent;
 
     }
