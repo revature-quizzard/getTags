@@ -2,11 +2,11 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: A simple AWS Lambda for searching book records within a DynamoDB table.
 Resources:
-  GetBooksFx:
+  GetTagsFx:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: target/post-set-1.0-SNAPSHOT.jar
-      Handler: com.revature.post_sets.PostHandler
+      CodeUri: target/get-tags-1.0-SNAPSHOT.jar
+      Handler: com.revature.get_tags.GetHandler
       Runtime: java8.al2
       Description: Java function
       MemorySize: 256
@@ -14,5 +14,3 @@ Resources:
       Tracing: Active
       Policies:
         - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
-
-
