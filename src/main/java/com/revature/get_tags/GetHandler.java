@@ -34,7 +34,14 @@ public class GetHandler implements RequestHandler<APIGatewayProxyRequestEvent, A
         headers.put("Access-Control-Allow-Origin", "*");
         responseEvent.setHeaders(headers);
 
-        List<Tag> tags = tagRepo.getAll();
+        List<Tag> tags = new ArrayList<>();
+        try {
+            tags = tagRepo.getAll();
+        } catch (Exception e) {
+            responseEvent.setStatusCode(500);
+            return responseEvent;
+        }
+
         responseEvent.setBody(mapper.toJson(tags));
         return responseEvent;
 
